@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'signup.dart';
 import 'home.dart';
 import 'supporter_list.dart';
 
@@ -96,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
         color: Colors.lightBlue,
         splashColor: Colors.lightBlueAccent,
         onPressed: () {
-          //Navigator.of(context).pushNamed(HomePage.tag);
+          Navigator.of(context).pushNamed(SignUpPage.tag);
         },
       ),
     );

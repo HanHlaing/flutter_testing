@@ -23,7 +23,7 @@ class _ListPageState extends State<ListPage>   {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Supporter List'),
+        title: const Text('Choose Supporter'),
       ),
       body: Container(
         child: _buildContent(),

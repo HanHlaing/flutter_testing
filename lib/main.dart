@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'signup.dart';
 import 'login.dart';
 import 'home.dart';
 import 'supporter_list.dart';
@@ -10,6 +11,7 @@ class MyApp extends StatelessWidget {
     LoginPage.tag: (context) => LoginPage(),
     HomePage.tag: (context) => HomePage(),
     ListPage.tag: (context) => ListPage(),
+    SignUpPage.tag: (context) => SignUpPage(),
   };
 
   @override
