@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
+import 'supporter_list.dart';
 
 class LoginPage extends StatefulWidget {
   static String tag = 'login-page';
@@ -79,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
         color: Colors.white,
         splashColor: Colors.lightBlueAccent,
         onPressed: () {
-          //Navigator.of(context).pushNamed(HomePage.tag);
+          Navigator.of(context).pushNamed(ListPage.tag);
         },
       ),
     );
