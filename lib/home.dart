@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
+import 'style.dart';
 
 class HomePage extends StatelessWidget {
   static String tag = 'home-page';
@@ -72,10 +73,7 @@ class HomePage extends StatelessWidget {
       ),
     );
 
-    DecorationImage backgroundImage = new DecorationImage(
-      image: new ExactAssetImage('assets/bg_login.png'),
-      fit: BoxFit.cover,
-    );
+
 
     final body = Container(
       width: MediaQuery.of(context).size.width,

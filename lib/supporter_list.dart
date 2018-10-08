@@ -34,9 +34,10 @@ class _ListPageState extends State<ListPage>   {
   Widget _buildContent() {
     return ListView.builder(
         itemCount: allContacts.length,
+
         itemBuilder: (BuildContext content, int index) {
           Contact contact = allContacts[index];
-          return ContactListTile(contact);
+          return ContactListTile(contact,context);
         });
   }
 
@@ -44,11 +45,19 @@ class _ListPageState extends State<ListPage>   {
 }
 
 class ContactListTile extends ListTile {
-  ContactListTile(Contact contact)
+  ContactListTile(Contact contact,BuildContext context)
       : super(
+    onTap: () {
+      Scaffold.of(context).showSnackBar(new SnackBar(
+        content: new Text('Hello -> '+contact.name),
+        duration: new Duration(seconds: 5),
+      ));
+      //Navigator.pushNamed(context, contact.name[0]);
+    },
     title: Text(contact.name),
     subtitle: Text(contact.email),
     leading: CircleAvatar(child: Text(contact.name[0])),
+
   );
 }
 

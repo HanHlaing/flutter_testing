@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'signup.dart';
 import 'home.dart';
 import 'supporter_list.dart';
+import 'style.dart';
 
 class LoginPage extends StatefulWidget {
   static String tag = 'login-page';
@@ -102,10 +103,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
 
-    DecorationImage backgroundImage = new DecorationImage(
-      image: new ExactAssetImage('assets/bg_login.png'),
-      fit: BoxFit.cover,
-    );
+
 
     final forgotLabel = FlatButton(
       child: Text(
