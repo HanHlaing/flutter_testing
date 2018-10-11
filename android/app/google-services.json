@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "143728174282",
+    "firebase_url": "https://mee-pya-tike.firebaseio.com",
+    "project_id": "mee-pya-tike",
+    "storage_bucket": "mee-pya-tike.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143728174282:android:de312f91f60e3d2a",
+        "android_client_info": {
+          "package_name": "com.hhm.meepyatike"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143728174282-50d1k66bsisc4muef2ag5rnr9o64559p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUZZNinzMzlwlIL05Saz1bka4qyia7bUs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

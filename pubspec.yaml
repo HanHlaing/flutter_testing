@@ -9,20 +9,29 @@ description: A new Flutter application.
 # Read more about versioning at semver.org.
 version: 1.0.0+1
 
-environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+#environment:
+  #sdk: ">=2.0.0-dev.68.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+  firebase_auth: ^0.5.18
+  google_sign_in: ^3.0.4
+  cloud_firestore: ^0.7.4
+  fluttertoast: ^2.0.7
+  image_picker: ^0.4.6
+  shared_preferences: ^0.4.2
+  firebase_storage: ^1.0.1
+  cached_network_image: ^0.4.1
+  intl: ^0.15.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
 
 flutter:
@@ -32,6 +41,16 @@ flutter:
     - assets/bg_login.png
     - assets/bg_info.png
     - assets/alucard.jpg
+    - assets/img_not_available.jpeg
+    - assets/mimi1.gif
+    - assets/mimi2.gif
+    - assets/mimi3.gif
+    - assets/mimi4.gif
+    - assets/mimi5.gif
+    - assets/mimi6.gif
+    - assets/mimi7.gif
+    - assets/mimi8.gif
+    - assets/mimi9.gif
   fonts:
       - family: Nunito
         fonts:

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'chat.dart';
 
 class Contact {
   Contact({this.name, this.email});
@@ -48,11 +48,13 @@ class ContactListTile extends ListTile {
   ContactListTile(Contact contact,BuildContext context)
       : super(
     onTap: () {
-      Scaffold.of(context).showSnackBar(new SnackBar(
-        content: new Text('Hello -> '+contact.name),
-        duration: new Duration(seconds: 5),
-      ));
-      //Navigator.pushNamed(context, contact.name[0]);
+      Navigator.push(
+          context,
+          new MaterialPageRoute(
+              builder: (context) => new Chat(
+                peerId: "HanHlaingMoe",
+                peerAvatar: "test",
+              )));
     },
     title: Text(contact.name),
     subtitle: Text(contact.email),
