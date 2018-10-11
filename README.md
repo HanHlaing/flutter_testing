@@ -2,26 +2,16 @@
 A new Flutter application.
 
 # APPLICATION SCREENSHOTS
-1.
-![screenshot_20181011-161910](https://user-images.githubusercontent.com/8612983/46796019-946d7500-cd71-11e8-82fa-61a7325dd920.png)
 
-2.
-![screenshot_20181011-161915](https://user-images.githubusercontent.com/8612983/46796021-95060b80-cd71-11e8-96c7-965d4ac1a467.png)
+![1](https://user-images.githubusercontent.com/8612983/46796910-c5e74000-cd73-11e8-8076-c32f574ffeda.png)
 
-3.
-![screenshot_20181011-161918](https://user-images.githubusercontent.com/8612983/46796024-95060b80-cd71-11e8-825c-3cc3ff25cf36.png)
+![2](https://user-images.githubusercontent.com/8612983/46796905-c54ea980-cd73-11e8-8c95-08615b88d30f.png)
 
-4.
-![screenshot_20181011-161938](https://user-images.githubusercontent.com/8612983/46796026-959ea200-cd71-11e8-8c8a-90231be2ce72.png)
+![3](https://user-images.githubusercontent.com/8612983/46796906-c54ea980-cd73-11e8-8060-953292276a26.png)
 
-5.
-![screenshot_20181005-162213](https://user-images.githubusercontent.com/8612983/46796028-959ea200-cd71-11e8-8e77-646551935e54.png)
+![4](https://user-images.githubusercontent.com/8612983/46796908-c54ea980-cd73-11e8-852d-737b1b8cac6d.png)
 
-6.
-![screenshot_20181005-162218](https://user-images.githubusercontent.com/8612983/46796029-96373880-cd71-11e8-9cee-145ed30c92ba.png)
-
-7.
-![screenshot_20181005-162222](https://user-images.githubusercontent.com/8612983/46796031-96373880-cd71-11e8-8184-fa9086fbc3a4.png)
+![5](https://user-images.githubusercontent.com/8612983/46796909-c5e74000-cd73-11e8-916f-6a055a0ce5a3.png)
 
 
 
