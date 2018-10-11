@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
 import 'style.dart';
+import 'supporter_list.dart';
 
 class HomePage extends StatelessWidget {
   static String tag = 'home-page';
@@ -51,7 +52,7 @@ class HomePage extends StatelessWidget {
         color: Colors.white,
         splashColor: Colors.lightBlueAccent,
         onPressed: () {
-          Navigator.of(context).pushNamed(LoginPage.tag);
+          Navigator.of(context).pushNamed(ListPage.tag);
         },
       ),
     );
