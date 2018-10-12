@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "143728174282-ikr9coocdthm8u0asu1snbqviburi780.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hhm.meepyatike",
+            "certificate_hash": "bbdd23e9b02110110223b346451fa596e060ff06"
+          }
+        },
+        {
           "client_id": "143728174282-50d1k66bsisc4muef2ag5rnr9o64559p.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,20 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143728174282-50d1k66bsisc4muef2ag5rnr9o64559p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "143728174282-kaj9ofk2qmo1f9rfpg4e5kaonlrn2ubp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.hhm.meepyatike"
+              }
+            }
+          ]
         },
         "ads_service": {
           "status": 2

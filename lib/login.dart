@@ -3,6 +3,12 @@ import 'signup.dart';
 import 'home.dart';
 import 'supporter_list.dart';
 import 'style.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'const.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   static String tag = 'login-page';
@@ -12,6 +18,74 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final GoogleSignIn googleSignIn = new GoogleSignIn();
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  SharedPreferences prefs;
+
+  bool isLoading = false;
+  bool isLoggedIn = false;
+  FirebaseUser currentUser;
+
+  Future<Null> handleSignIn() async {
+    prefs = await SharedPreferences.getInstance();
+
+    this.setState(() {
+      isLoading = true;
+    });
+
+    GoogleSignInAccount googleUser = await googleSignIn.signIn();
+    GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    FirebaseUser firebaseUser = await firebaseAuth.signInWithGoogle(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    if (firebaseUser != null) {
+      // Check is already sign up
+      final QuerySnapshot result = await Firestore.instance
+          .collection('users')
+          .where('id', isEqualTo: firebaseUser.displayName+'-'+firebaseUser.uid)
+          .getDocuments();
+
+      final List<DocumentSnapshot> documents = result.documents;
+      if (documents.length == 0) {
+        // Update data to server if new user
+        Firestore.instance
+            .collection('users')
+            .document(firebaseUser.displayName)
+            .setData({
+          'name': firebaseUser.displayName,
+          'photoUrl': firebaseUser.photoUrl,
+          'type':'1',
+          'id': firebaseUser.displayName+'-'+firebaseUser.uid
+        });
+
+        // Write data to local
+        currentUser = firebaseUser;
+        await prefs.setString('id', currentUser.displayName+'-'+currentUser.uid);
+        await prefs.setString('name', currentUser.displayName);
+        await prefs.setString('type', '1');
+        await prefs.setString('photoUrl', currentUser.photoUrl);
+      } else {
+        // Write data to local
+        await prefs.setString('id', documents[0]['name']+'-'+documents[0]['id']);
+        await prefs.setString('name', documents[0]['name']);
+        await prefs.setString('photoUrl', documents[0]['photoUrl']);
+        await prefs.setString('type', '1');
+      }
+      Fluttertoast.showToast(msg: "Sign in success");
+      this.setState(() {
+        isLoading = false;
+      });
+
+      Navigator.of(context).pushNamed(ListPage.tag);
+    } else {
+      Fluttertoast.showToast(msg: "Sign in fail");
+      this.setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final logo = Hero(
@@ -47,8 +121,8 @@ class _LoginPageState extends State<LoginPage> {
       decoration: InputDecoration(
         hintText: 'Password',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0),
-
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(32.0),
         ),
       ),
     );
@@ -103,6 +177,23 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
 
+    final signUpWithGoogle = new SizedBox(
+      height: 42.0,
+      child: RaisedButton(
+        child: Text(
+          'SIGN IN WITH GOOGLE',
+          style: TextStyle(fontSize: 16.0),
+        ),
+        elevation: 8.0,
+        textColor: Colors.white,
+        shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(5.0)),
+        color: Color(0xffdd4b39),
+        splashColor: Colors.transparent,
+        onPressed: handleSignIn,
+      ),
+    );
+
 
 
     final forgotLabel = FlatButton(
@@ -114,30 +205,46 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: new Container(
-        decoration: new BoxDecoration(
-          image: backgroundImage,
-        ),
-        child: new Center(
-          child: ListView(
-            shrinkWrap: true,
-            padding: EdgeInsets.only(left: 24.0, right: 24.0),
-            children: <Widget>[
-              logo,
-              SizedBox(height: 48.0),
-              email,
-              SizedBox(height: 8.0),
-              password,
-              SizedBox(height: 30.0),
-              loginRaiseButton,
-              SizedBox(height: 14.0),
-              signUpRaiseButton,
-              //forgotLabel
-            ],
+        backgroundColor: Colors.white,
+        body: Stack(children: <Widget>[
+          Container(
+            decoration: new BoxDecoration(
+              image: backgroundImage,
+            ),
+            child: new Center(
+              child: ListView(
+                shrinkWrap: true,
+                padding: EdgeInsets.only(left: 24.0, right: 24.0),
+                children: <Widget>[
+                  logo,
+                  SizedBox(height: 48.0),
+                  email,
+                  SizedBox(height: 8.0),
+                  password,
+                  SizedBox(height: 30.0),
+                  loginRaiseButton,
+                  SizedBox(height: 14.0),
+                  signUpRaiseButton,
+                  SizedBox(height: 14.0),
+                  signUpWithGoogle
+                  //forgotLabel
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
-    );
+          // Loading
+          Positioned(
+            child: isLoading
+                ? Container(
+                    child: Center(
+                      child: CircularProgressIndicator(
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(themeColor)),
+                    ),
+                    color: Colors.white.withOpacity(0.8),
+                  )
+                : Container(),
+          )
+        ]));
   }
 }

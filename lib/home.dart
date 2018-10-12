@@ -11,7 +11,7 @@ import 'const.dart';
 class HomePage extends StatefulWidget {
 
   static String tag = 'home-page';
-  
+
   @override
   HomePageState createState() => new HomePageState();
 }
@@ -44,11 +44,11 @@ class HomePageState extends State<HomePage> {
         Firestore.instance
             .collection('users')
             .document(_deviceid)
-            .setData({'nickname': _deviceid, 'id': _deviceid,'type':'2'});
+            .setData({'name': _deviceid, 'id': _deviceid,'type':'2'});
       } else {
         // Write data to local
         await prefs.setString('id', documents[0]['id']);
-        await prefs.setString('nickname', documents[0]['nickname']);
+        await prefs.setString('name', documents[0]['name']);
         await prefs.setString('type', documents[0]['type']);
       }
       Fluttertoast.showToast(msg: "Sign in success");

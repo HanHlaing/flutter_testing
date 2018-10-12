@@ -5,7 +5,7 @@ A new Flutter application.
 
 ![1](https://user-images.githubusercontent.com/8612983/46796910-c5e74000-cd73-11e8-8076-c32f574ffeda.png)
 
-![2](https://user-images.githubusercontent.com/8612983/46796905-c54ea980-cd73-11e8-8c95-08615b88d30f.png)
+![2](https://user-images.githubusercontent.com/8612983/46854927-60a15680-ce28-11e8-981b-db53d8dfce7f.png)
 
 ![3](https://user-images.githubusercontent.com/8612983/46796906-c54ea980-cd73-11e8-8060-953292276a26.png)
 
