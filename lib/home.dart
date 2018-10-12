@@ -44,12 +44,18 @@ class HomePageState extends State<HomePage> {
         Firestore.instance
             .collection('users')
             .document(_deviceid)
-            .setData({'name': _deviceid, 'id': _deviceid,'type':'2'});
+            .setData({'name': _deviceid, 'id': _deviceid,'type':'2','photoUrl':''});
+
+        await prefs.setString('id', _deviceid);
+        await prefs.setString('name', _deviceid);
+        await prefs.setString('type','2');
+        await prefs.setString('photoUrl', '');
       } else {
         // Write data to local
         await prefs.setString('id', documents[0]['id']);
         await prefs.setString('name', documents[0]['name']);
         await prefs.setString('type', documents[0]['type']);
+        await prefs.setString('photoUrl', documents[0]['photoUrl']);
       }
       Fluttertoast.showToast(msg: "Sign in success");
 
