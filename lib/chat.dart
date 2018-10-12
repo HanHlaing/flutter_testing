@@ -10,6 +10,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:device_id/device_id.dart';
 
 class Chat extends StatelessWidget {
   final String peerId;
@@ -51,7 +52,7 @@ class ChatScreenState extends State<ChatScreen> {
   String peerId;
   String peerAvatar;
   String id;
-
+  String _deviceid = 'Unknown';
   var listMessage;
   String groupChatId;
   SharedPreferences prefs;
@@ -75,8 +76,20 @@ class ChatScreenState extends State<ChatScreen> {
     isLoading = false;
     isShowSticker = false;
     imageUrl = '';
-
+    initDeviceId();
     readLocal();
+  }
+
+  Future<void> initDeviceId() async {
+    String deviceid;
+
+    deviceid = await DeviceId.getID;
+
+    if (!mounted) return;
+
+    setState(() {
+      _deviceid = deviceid;
+    });
   }
 
   void onFocusChange() {
@@ -150,7 +163,7 @@ class ChatScreenState extends State<ChatScreen> {
         await transaction.set(
           documentReference,
           {
-            'idFrom': id,
+            'idFrom': _deviceid,
             'idTo': peerId,
             'timestamp': DateTime.now().millisecondsSinceEpoch.toString(),
             'content': content,

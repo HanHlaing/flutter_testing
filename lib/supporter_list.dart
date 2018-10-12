@@ -52,7 +52,7 @@ class ContactListTile extends ListTile {
           context,
           new MaterialPageRoute(
               builder: (context) => new Chat(
-                peerId: "HanHlaingMoe",
+                peerId: contact.name,
                 peerAvatar: "test",
               )));
     },
