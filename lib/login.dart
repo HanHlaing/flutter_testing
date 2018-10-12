@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
       // Check is already sign up
       final QuerySnapshot result = await Firestore.instance
           .collection('users')
-          .where('id', isEqualTo: firebaseUser.displayName+'-'+firebaseUser.uid)
+          .where('id', isEqualTo: firebaseUser.uid)
           .getDocuments();
 
       final List<DocumentSnapshot> documents = result.documents;
@@ -56,18 +56,18 @@ class _LoginPageState extends State<LoginPage> {
           'name': firebaseUser.displayName,
           'photoUrl': firebaseUser.photoUrl,
           'type':'1',
-          'id': firebaseUser.displayName+'-'+firebaseUser.uid
+          'id': firebaseUser.uid
         });
 
         // Write data to local
         currentUser = firebaseUser;
-        await prefs.setString('id', currentUser.displayName+'-'+currentUser.uid);
+        await prefs.setString('id', currentUser.uid);
         await prefs.setString('name', currentUser.displayName);
         await prefs.setString('type', '1');
         await prefs.setString('photoUrl', currentUser.photoUrl);
       } else {
         // Write data to local
-        await prefs.setString('id', documents[0]['name']+'-'+documents[0]['id']);
+        await prefs.setString('id', documents[0]['id']);
         await prefs.setString('name', documents[0]['name']);
         await prefs.setString('photoUrl', documents[0]['photoUrl']);
         await prefs.setString('type', '1');
@@ -156,7 +156,8 @@ class _LoginPageState extends State<LoginPage> {
         color: Colors.white,
         splashColor: Colors.lightBlueAccent,
         onPressed: () {
-          Navigator.of(context).pushNamed(ListPage.tag);
+          //Navigator.of(context).pushNamed(ListPage.tag);
+          Fluttertoast.showToast(msg: 'Comming soon!');
         },
       ),
     );
