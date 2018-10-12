@@ -141,7 +141,7 @@ class HomePageState extends State<HomePage> {
                   valueColor: AlwaysStoppedAnimation<Color>(themeColor),
                 ),
               ),
-              color: Colors.white.withOpacity(0.8),
+              color: Colors.transparent,
             )
           : Container(),
     );

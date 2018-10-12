@@ -242,7 +242,7 @@ class _LoginPageState extends State<LoginPage> {
                           valueColor:
                               AlwaysStoppedAnimation<Color>(themeColor)),
                     ),
-                    color: Colors.white.withOpacity(0.8),
+                    color: Colors.transparent,
                   )
                 : Container(),
           )
