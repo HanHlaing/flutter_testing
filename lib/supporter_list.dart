@@ -87,7 +87,7 @@ class _ListPageState extends State<ListPage>   {
                 context,
                 new MaterialPageRoute(
                     builder: (context) => new Chat(
-                      peerId: document.documentID,
+                      peerId: document['id'],
                       peerAvatar: document['photoUrl'] ?? '',//document['photoUrl'],
                     )));
           },
